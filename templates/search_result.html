@@ -1,0 +1,25 @@
+
+{% extends "layout.html" %}
+{% block content %}
+    <div class="form-wrapper">
+      <h2 class="title">Podaj szukaną frazę: </h2>
+      <p></p>
+      <form method="POST" action="{{ url_for('search_result') }}">
+          <fieldset class="form-field">
+              {{ form.csrf_token }}
+              {{ form.query.label }}
+              {{ form.query(size=20) }}
+          </fieldset>
+          <p></p>
+          <p></p>
+          {{ form.submit }}
+      </form>
+    </div>
+    <p></p>
+    <p></p>
+    {% for result in results %}
+        <article class="media content-section">
+          <p>{{ result }}</p>
+        </article>
+    {% endfor %}
+{% endblock content %}

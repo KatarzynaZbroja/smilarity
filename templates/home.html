@@ -1,0 +1,18 @@
+
+{% extends "layout.html" %}
+{% block content %}
+    <div class="form-wrapper">
+      <h2 class="title">Query: </h2>
+      <p></p>
+      <form method="POST" action="{{ url_for('search_result') }}">
+          <fieldset class="form-field">
+              {{ form.csrf_token }}
+              {{ form.query.label }}
+              {{ form.query(size=20) }}
+          </fieldset>
+          <p></p>
+          <p></p>
+          {{ form.submit }}
+      </form>
+    </div>
+{% endblock content %}
